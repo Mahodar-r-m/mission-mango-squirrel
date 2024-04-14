@@ -16,14 +16,18 @@ $(document).ready(function(){
 3. welcome animation support
 4. feather icon
 5. counter
+6. post days counter
+7. Deadline counter
 ======================================*/
 
     // 1. Scroll To Top 
 		$(window).on('scroll',function () {
 			if ($(this).scrollTop() > 600) {
 				$('.return-to-top').fadeIn();
+				$('#share-button').fadeIn();
 			} else {
 				$('.return-to-top').fadeOut();
+				$('#share-button').fadeOut();
 			}
 		});
 		$('.return-to-top').on('click',function(){
@@ -108,4 +112,59 @@ $(document).ready(function(){
 			});	
 		});
 
+	// 6. post days counter
+	function calculatePostDays(startDate, endDate) {
+		const oneDay = 1000 * 60 * 60 * 24; // milliseconds in one day
+	  
+		// Convert the start and end dates to milliseconds
+		const startDateInMs = startDate.getTime();
+		const endDateInMs = endDate.getTime();
+	  
+		// Calculate the difference in milliseconds between the two dates
+		// const differenceInMs = endDateInMs - startDateInMs - oneDay;
+		const differenceInMs = endDateInMs - startDateInMs;
+	  
+		// Calculate the number of days between the two dates
+		const days = Math.floor(differenceInMs / oneDay);
+	  
+		// Return the number of days
+		return days;
+	}
+	
+	// Example usage:
+	
+	const startDate = new Date("2024-04-12");
+	const endDate = new Date();
+	
+	const days = calculatePostDays(startDate, endDate);
+	document.getElementById('post_days').innerHTML = `${days} ${days === 1 ? 'day' : 'days'} ago`
+	// console.log(days); // 3
+
+	// 7. Deadline counter
+	function updateTimer() {
+		const future = Date.parse("May 31, 2024 23:59:59");
+		const now = new Date();
+		const diff = future - now;
+	  
+		const days  = Math.floor( diff / (1000*60*60*24) );
+		const hours = Math.floor( diff / (1000*60*60) );
+		const mins  = Math.floor( diff / (1000*60) );
+		const secs  = Math.floor( diff / 1000 );
+	  
+		const d = days;
+		const h = hours - days  * 24;
+		const m = mins  - hours * 60;
+		const s = secs  - mins  * 60;
+	  
+		document.getElementById("timer")
+		  .innerHTML =
+			'<div>' + d + '<span>days</span></div>' +
+			'<div>' + h + '<span>hours</span></div>' +
+			'<div>' + m + '<span>minutes</span></div>' +
+			'<div>' + s + '<span>seconds</span></div>' ;
+	  }
+	//   setInterval('updateTimer()', 1000 );
+	setInterval(() => {
+		updateTimer();
+	}, 1000);	  
 });

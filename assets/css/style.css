@@ -1117,6 +1117,17 @@ nav.navbar.bootsnav .navbar-toggle i{color: #c23274;}
     transition: .5s;
 	z-index: 2;
 }
+#scroll-Top  #share-button{
+    position: fixed;
+    right: 30px;
+    bottom: 70px;
+    display: none;
+}
+#scroll-Top  #share-button a{
+    width: 40px;
+    line-height: 40px;
+    height: 40px;
+}
 #scroll-Top  .return-to-top:hover {
     background:#f43032;
 	border:1px solid #c23274;
@@ -1160,3 +1171,23 @@ nav.navbar.bootsnav .navbar-toggle i{color: #c23274;}
         display: none; /* Display on mobile devices */
     }
 }
+
+/* ------------------------------------------------------------ */
+#timer {  
+    font-size: 3em;
+    font-weight: 100;
+    color: #c23274;
+    text-shadow: 0 0 20px #771c44;
+    font-family: "Helvetica Neue", "Open Sans", helvetica, arial, sans-serif; 
+}
+#timer div {
+    display: inline-block;
+    min-width: 90px;
+}
+#timer div span {
+    color: #c23274;
+    display: block;
+    font-size: .35em;
+    font-weight: 400;
+}
+  
