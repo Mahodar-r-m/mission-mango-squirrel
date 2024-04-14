@@ -1191,3 +1191,16 @@ nav.navbar.bootsnav .navbar-toggle i{color: #c23274;}
     font-weight: 400;
 }
   
+#faq iframe{
+    width: 70%;
+    height: 70vh;
+}
+@media only screen and (max-width: 768px) {
+    #faq iframe{
+        width: 150%;
+        height: 70vh;
+        position: relative;
+        right: 9rem;
+        overflow-x: hidden;
+    }
+}
